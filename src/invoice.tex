@@ -1,0 +1,187 @@
+\cslang
+
+\fontfam[Helvetica]
+\typosize[8/10]
+\margins/1 a4 (2,2,2,2)cm
+\parindent=0pt
+
+\hyperlinks \Blue \Blue
+\nopagenumbers
+
+% defs
+\def\Label#1{{\bf #1}\par}
+
+\def\Col#1#2{%
+  \vtop{%
+    \hsize=#1
+    #2%
+  }%
+}
+
+\def\InvoiceRow#1#2#3#4#5{%
+  #1 & #2 & #3 & #4 & #5 \cr
+}
+
+{\typosize[12/16]\bf FAKTURA č. 2026050001}
+
+\vskip24pt
+
+\hbox to \hsize{%
+  \Col{.45\hsize}{%
+    {\Blue \typosize[12/16] \bf DODAVATEL}\par
+    \vskip8pt
+    {\bf Ondřej Faltin}\par
+    \vskip4pt
+    Kpt. Stránského 960/37, Černý Most\par
+    19800 Praha\par
+    Česká republika\par
+    \vskip8pt
+    {\bf IČO} 23482770\par
+    {\bf Neplátce DPH}\par
+  }%
+  \hfil
+  \Col{.45\hsize}{%
+    {\Blue \typosize[12/16] \bf ODBĚRATEL}\par
+    \vskip8pt
+    {\bf Nubilum ICT s.r.o.}\par
+    \vskip4pt
+    Jičínská 226/17, Žižkov\par
+    13000 Praha\par
+    Česká republika\par
+    \vskip8pt
+    {\bf IČO} 17775566 \quad {\bf DIČ} CZ17775566\par
+  }%
+}
+
+\vskip48pt
+
+% BLUE PAYMENT BOX
+\hbox to \hsize{%
+  \hbox to 0pt{%
+    \kern-2cm
+    {\Blue\vrule width 210mm height 96pt depth0pt}%
+    \hss
+  }%
+  \vbox to 96pt{%
+    \vskip15pt
+
+    {\White\typosize[12/16]\bf Platební údaje}\par
+
+    \vskip12pt
+
+    \hbox to 95mm{%
+      \hbox to 55mm{{\White Číslo účtu}\hfil}%
+      {\White\bf 33082508/5500}%
+      \hfil
+    }%
+
+    \vskip8pt
+
+    \hbox to 95mm{%
+      \hbox to 55mm{{\White Forma úhrady}\hfil}%
+      {\White\bf Převodem}%
+      \hfil
+    }%
+
+    \vskip8pt
+
+    \hbox to 95mm{%
+      \hbox to 55mm{{\White Variabilní symbol}\hfil}%
+      {\White\bf 2026050001}%
+      \hfil
+    }%
+
+    \vfil
+  }%
+}
+
+\vskip24pt
+
+\hbox to \hsize{%
+  \Col{.30\hsize}{%
+    \Label{Datum vystavení}
+    31. 05. 2026
+  }%
+  \hfil
+  \Col{.30\hsize}{%
+    \Label{Splatnost}
+    14 dní
+  }%
+  \hfil
+  \Col{.30\hsize}{%
+    \Label{Datum splatnosti}
+    14. 06. 2026
+  }%
+}
+
+\vskip24pt
+
+{\typosize[12/16]\bf Položky faktury}
+
+\vskip8pt
+
+\halign to \hsize{%
+  \hbox to 13mm{#\hfil}&
+  \hbox to 13mm{#\hfil}&
+  \hbox to 82mm{#\hfil}&
+  \hbox to 30mm{\hfil #}&
+  \hbox to 32mm{\hfil #}\cr
+  {\bf Počet} &
+  {\bf Jedn.} &
+  {\bf Popis} &
+  {\bf Jedn. cena} &
+  {\bf Celkem} \cr
+  \noalign{\vskip4pt\hrule\vskip8pt}
+  \InvoiceRow{38}{hod.}{Programátorské práce za období 05/2026}{250,00}{9 500,00}
+  \InvoiceRow{142}{hod.}{Programátorské práce za období 05/2026}{250,00}{9 500,00}
+}
+
+\vskip48pt
+% BLUE TOTAL BOX
+\hbox to \hsize{%
+  \hfil
+
+  \hbox to 0pt{%
+    {\Blue\vrule width 105mm height 55pt depth0pt}%
+    \hss
+  }%
+
+  \hbox{%
+    \vbox to 55pt{%
+      \vfil
+
+      \hbox to 85mm{%
+        \kern5mm
+
+        {\White\bf Celkem k úhradě:}%
+
+        \hfil
+
+        \hbox to 32mm{%
+          \hfil
+          {\White\typosize[12/16]\bf 19 000,00 Kč}%
+        }%
+
+      }%
+
+      \vfil
+    }%
+  }%
+}
+
+\footline={%
+  \hfil
+  \vbox{%
+    \hrule
+    \vskip8pt
+    \hbox to \hsize{%
+      Vystavil(a) Ondřej Faltin
+      \hfil
+      Strana 1 z 1
+    }%
+  }%
+
+  \hfil
+}
+
+\bye

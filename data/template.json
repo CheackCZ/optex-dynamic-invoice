@@ -1,0 +1,60 @@
+{
+  "supplier": {
+    "type": "osvc | pravnicka_osoba",
+    "name": "name and last name | company name",
+
+    "address": {
+      "street": "",
+      "zip": "",
+      "city": "",
+      "state": ""
+    },
+
+    "ico": "",
+
+    "vat_payer": false,
+
+    "bank_account": ""
+  },
+
+  "customer": {
+    "type": "osvc | pravnicka_osoba",
+    "name": "name and last name | company name",
+
+    "address": {
+      "street": "",
+      "zip": "",
+      "city": "",
+      "state": ""
+    },
+
+    "ico": "",
+
+    "vat_payer": true,
+    "dic": ""
+  },
+
+  "settings": {
+    "currency": "CZK",
+    "due_days": 14,
+    "invoice_number": "auto | custom",
+    "issue_date": "auto | YYYY-MM-DD",
+    "due_date": "auto | YYYY-MM-DD",
+    "issuer": "name and last name | company name"
+  },
+
+  "items": [
+    {
+      "name": "",
+      "quantity": 1,
+      "unit": "ks",
+      "unit_price": 15000
+    },
+    {
+      "name": "",
+      "quantity": 3,
+      "unit": "hod",
+      "unit_price": 1000
+    }
+  ]
+}
