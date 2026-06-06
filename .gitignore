@@ -1,1 +1,7 @@
+# build outputs
+build/
+*.pdf
+*.log
+
+# generated/user data
 data/data.json
