@@ -1,31 +1,65 @@
 # Dynamicky generované faktury
-Projekt je zkráceně generátor dynamických faktur vytvořený pomocí **OpTeXu**. Projekt umožňuje vytvářet PDF faktury z externích dat uložených ve formátu JSON/CSV, která slouží pro automatické číslování faktur, používání dat o odběratelích, dodavatelích, apod.
+Projekt je zkráceně generátor dynamických faktur vytvořený pomocí **OpTeXu**. Projekt umožňuje vytvářet PDF faktury z externích dat uložených ve formátu JSON, která slouží pro používání dat o odběratelích, dodavatelích, apod.
 
 ## Hlavní funkce projektu
-- dynamicky generováné PDF faktury.
-- načítání fakturačních dat z externího JSON/CSV souboru.
-- automatický výpočet cen položek a celkové částky.
-- automatické generování čísla faktury ve formátu `YYYYMMNNNN`.
-- sestavení projektu pomocí Makefile.
+- dynamické generování PDF faktury
+- načítání fakturačních údajů z JSON souboru
+- oddělení datové a prezentační vrstvy
+- dynamický počet položek faktury
+- automatický výpočet ceny jednotlivých položek
+- automatický výpočet celkové částky faktury
+- podpora údajů:
+  - dodavatel
+  - odběratel
+  - platební informace
+  - splatnost
+  - položky faktury
+- sestavení projektu pomocí Makefile
 
-## Struktura projektu
+## Architektura
+### Struktura projektu
 ```text
 project/
+│
 ├── build/
-│   ├── YYYYMMNNNN_invoice.pdf
-│   ├── YYYYMMNNNN_invoice.log
-│   └── YYYYMMNNNN_invoice.ref
+│   ├── invoice.pdf
+│   └── invoice.log
 │
 ├── data/
-│   ├── invoice.json
-│   └── counter.json
+│   ├── data.json
+│   └── template.json
 │
 ├── src/
 │   ├── invoice.tex
-│   └── style.tex
+│   └── data.tex
 │
 ├── Makefile
+├── .gitignore
 └── README.md
+```
+
+### TeX soubory
+`src/invoice.tex` -> Hlavní OpTeX soubor obsahující vzhled faktury.
+Obsahuje:
+- rozložení stránky,
+- typografii,
+- tabulku položek,
+- platební blok,
+- výsledný vzhled PDF.
+
+<br>
+
+`src/data.tex` -> Datová vrstva projektu.
+Zajišťuje:
+- načtení JSON souboru,
+- převod JSON hodnot na OpTeX makra,
+- výpočet cen položek,
+- výpočet celkové ceny pomocí LuaTeX.
+
+### Vstupní data
+Data faktury jsou uložená v
+```text
+data/data.json
 ```
 
 ## Generování faktury
@@ -41,30 +75,12 @@ Výstupní PDF bude vytvořeno ve složce:
 build/
 ```
 
-## Číslování faktur
-
-Číslo faktury je generováno automaticky:
-
-```text
-YYYYMMNNNN
-```
-
-Například:
-
-```text
-2026050001
-
-2026 → rok
-05   → měsíc
-0001 → první faktura v měsíci
-```
-
 ## Technologie
 
 - OpTeX
 - LuaTeX
 - Lua
-- JSON/CSV
+- JSON
 - Makefile
 
 ## Autor
