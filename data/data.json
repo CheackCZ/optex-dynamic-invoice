@@ -25,10 +25,10 @@
   },
   "settings": {
     "currency": "CZK",
+    "invoice_number": "202606001",
+    "issue_date": "2026-06-06",
     "due_days": 14,
-    "invoice_number": "auto",
-    "issue_date": "auto",
-    "due_date": "auto",
+    "due_date": "2026-06-20",
     "issuer": "Ondřej Faltin"
   },
   "items": [
