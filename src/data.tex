@@ -1,0 +1,58 @@
+\jsonread\Data{data/data.json}
+\treedata[invoice]\Data
+
+% ---------- helpers ----------
+
+\def\Json#1{\cs{invoice/#1}}
+\def\JsonOrEmpty#1{\trycs{invoice/#1}{}}
+
+\def\VatText#1{%
+  \edef\tmp{#1}%
+  \def\trueval{true}%
+  \ifx\tmp\trueval Plátce DPH\else Neplátce DPH\fi
+}
+
+% ---------- supplier ----------
+
+\def\SupplierName{\Json{supplier/name}}
+\def\SupplierStreet{\Json{supplier/address/street}}
+\def\SupplierZip{\Json{supplier/address/zip}}
+\def\SupplierCity{\Json{supplier/address/city}}
+\def\SupplierState{\Json{supplier/address/state}}
+\def\SupplierIco{\Json{supplier/ico}}
+\def\SupplierDic{\JsonOrEmpty{supplier/dic}}
+\def\SupplierBankAccount{\Json{supplier/bank_account}}
+\def\SupplierVatText{\VatText{\Json{supplier/vat_payer}}}
+
+% ---------- customer ----------
+
+\def\CustomerName{\Json{customer/name}}
+\def\CustomerStreet{\Json{customer/address/street}}
+\def\CustomerZip{\Json{customer/address/zip}}
+\def\CustomerCity{\Json{customer/address/city}}
+\def\CustomerState{\Json{customer/address/state}}
+\def\CustomerIco{\Json{customer/ico}}
+\def\CustomerDic{\JsonOrEmpty{customer/dic}}
+\def\CustomerVatText{\VatText{\Json{customer/vat_payer}}}
+
+% ---------- invoice settings ----------
+
+\def\InvoiceNumber{\Json{settings/invoice_number}}
+\def\InvoiceCurrency{\Json{settings/currency}}
+\def\InvoiceDueDays{\Json{settings/due_days} dní}
+\def\InvoiceIssueDate{\Json{settings/issue_date}}
+\def\InvoiceDueDate{\Json{settings/due_date}}
+\def\InvoiceIssuer{\Json{settings/issuer}}
+
+% ---------- items ----------
+
+\def\InvoiceItems{%
+  \fornum 1..\cs{invoice/items[]} \do {%
+    \InvoiceRow
+      {\cs{invoice/items[##1]/quantity}}
+      {\cs{invoice/items[##1]/unit}}
+      {\cs{invoice/items[##1]/name}}
+      {\cs{invoice/items[##1]/unit_price}}
+      {\expr[2]{\cs{invoice/items[##1]/quantity}*\cs{invoice/items[##1]/unit_price}}}%
+  }%
+}

@@ -1,3 +1,5 @@
+\input src/data.tex
+
 \cslang
 
 \fontfam[Helvetica]
@@ -22,7 +24,7 @@
   #1 & #2 & #3 & #4 & #5 \cr
 }
 
-{\typosize[12/16]\bf FAKTURA č. 2026050001}
+{\typosize[12/16]\bf FAKTURA č. \InvoiceNumber}
 
 \vskip24pt
 
@@ -30,14 +32,14 @@
   \Col{.45\hsize}{%
     {\Blue \typosize[12/16] \bf DODAVATEL}\par
     \vskip8pt
-    {\bf Ondřej Faltin}\par
+    {\bf \SupplierName}\par
     \vskip4pt
-    Kpt. Stránského 960/37, Černý Most\par
-    19800 Praha\par
-    Česká republika\par
+    \SupplierStreet\par
+    \SupplierZip\ \SupplierCity\par
+    \SupplierState\par
     \vskip8pt
-    {\bf IČO} 23482770\par
-    {\bf Neplátce DPH}\par
+    {\bf IČO} \SupplierIco\par
+    {\bf \SupplierVatText}\par
   }%
   \hfil
   \Col{.45\hsize}{%

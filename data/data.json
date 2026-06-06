@@ -1,37 +1,28 @@
 {
   "supplier": {
     "name": "Ondřej Faltin",
-
     "address": {
-      "street": "Kpt. Stránského 960/37",
+      "street": "Kpt. Stránského 960\/37",
       "zip": "198 00",
       "city": "Praha, Černý Most",
       "state": "Česká republika"
     },
-
     "ico": "23482770",
-
     "vat_payer": false,
-
     "bank_account": "33082508/5500"
   },
-
   "customer": {
     "name": "Firma s.r.o.",
-
     "address": {
       "street": "Václavské náměstí 1",
       "zip": "110 00",
       "city": "Praha",
       "state": "Česká republika"
     },
-
     "ico": "12345678",
-
     "vat_payer": true,
     "dic": "CZ12345678"
   },
-
   "settings": {
     "currency": "CZK",
     "due_days": 14,
@@ -40,7 +31,6 @@
     "due_date": "auto",
     "issuer": "Ondřej Faltin"
   },
-
   "items": [
     {
       "name": "Vývoj webové stránky",
