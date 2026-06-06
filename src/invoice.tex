@@ -1,5 +1,6 @@
 \input src/data.tex
 
+% metadata
 \cslang
 
 \fontfam[Helvetica]
@@ -9,6 +10,7 @@
 
 \hyperlinks \Blue \Blue
 \nopagenumbers
+
 
 % defs
 \def\Label#1{{\bf #1}\par}
@@ -24,6 +26,7 @@
   #1 & #2 & #3 & #4 & #5 \cr
 }
 
+% document
 {\typosize[12/16]\bf FAKTURA č. \InvoiceNumber}
 
 \vskip24pt
@@ -39,25 +42,27 @@
     \SupplierState\par
     \vskip8pt
     {\bf IČO} \SupplierIco\par
+    {\bf DIČ} \SupplierDic\par
     {\bf \SupplierVatText}\par
   }%
   \hfil
   \Col{.45\hsize}{%
     {\Blue \typosize[12/16] \bf ODBĚRATEL}\par
     \vskip8pt
-    {\bf Nubilum ICT s.r.o.}\par
+    {\bf \CustomerName}\par
     \vskip4pt
-    Jičínská 226/17, Žižkov\par
-    13000 Praha\par
-    Česká republika\par
+    \CustomerStreet\par
+    \CustomerZip\ \CustomerCity\par
+    \CustomerState\par
     \vskip8pt
-    {\bf IČO} 17775566 \quad {\bf DIČ} CZ17775566\par
+    {\bf IČO} \CustomerIco\par
+    {\bf DIČ} \CustomerDic\par
+    {\bf \CustomerVatText}\par
   }%
 }
 
 \vskip48pt
 
-% BLUE PAYMENT BOX
 \hbox to \hsize{%
   \hbox to 0pt{%
     \kern-2cm
@@ -73,7 +78,7 @@
 
     \hbox to 95mm{%
       \hbox to 55mm{{\White Číslo účtu}\hfil}%
-      {\White\bf 33082508/5500}%
+      {\White\bf \SupplierBankAccount}%
       \hfil
     }%
 
@@ -81,7 +86,7 @@
 
     \hbox to 95mm{%
       \hbox to 55mm{{\White Forma úhrady}\hfil}%
-      {\White\bf Převodem}%
+      {\White\bf \SupplierPaymentMethod}%
       \hfil
     }%
 
@@ -89,7 +94,7 @@
 
     \hbox to 95mm{%
       \hbox to 55mm{{\White Variabilní symbol}\hfil}%
-      {\White\bf 2026050001}%
+      {\White\bf \InvoiceNumber}%
       \hfil
     }%
 
@@ -102,17 +107,17 @@
 \hbox to \hsize{%
   \Col{.30\hsize}{%
     \Label{Datum vystavení}
-    31. 05. 2026
+    \InvoiceIssueDate
   }%
   \hfil
   \Col{.30\hsize}{%
     \Label{Splatnost}
-    14 dní
+    \InvoiceDueDays
   }%
   \hfil
   \Col{.30\hsize}{%
     \Label{Datum splatnosti}
-    14. 06. 2026
+    \InvoiceDueDate
   }%
 }
 
@@ -134,12 +139,11 @@
   {\bf Jedn. cena} &
   {\bf Celkem} \cr
   \noalign{\vskip4pt\hrule\vskip8pt}
-  \InvoiceRow{38}{hod.}{Programátorské práce za období 05/2026}{250,00}{9 500,00}
-  \InvoiceRow{142}{hod.}{Programátorské práce za období 05/2026}{250,00}{9 500,00}
+  \InvoiceItems
 }
 
 \vskip48pt
-% BLUE TOTAL BOX
+
 \hbox to \hsize{%
   \hfil
 
@@ -161,7 +165,7 @@
 
         \hbox to 32mm{%
           \hfil
-          {\White\typosize[12/16]\bf 19 000,00 Kč}%
+          {\White\typosize[12/16]\bf \InvoiceTotal Kč}%
         }%
 
       }%

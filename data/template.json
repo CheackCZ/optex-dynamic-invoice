@@ -1,57 +1,45 @@
 {
   "supplier": {
-    "type": "osvc | pravnicka_osoba",
-    "name": "name and last name | company name",
-
+    "name": "",
     "address": {
       "street": "",
       "zip": "",
       "city": "",
       "state": ""
     },
-
     "ico": "",
-
     "vat_payer": false,
-
     "bank_account": ""
   },
-
   "customer": {
-    "type": "osvc | pravnicka_osoba",
-    "name": "name and last name | company name",
-
+    "name": "",
     "address": {
       "street": "",
       "zip": "",
       "city": "",
       "state": ""
     },
-
     "ico": "",
-
     "vat_payer": true,
     "dic": ""
   },
-
   "settings": {
     "currency": "CZK",
+    "invoice_number": "",
+    "issue_date": "",
     "due_days": 14,
-    "invoice_number": "auto | custom",
-    "issue_date": "auto | YYYY-MM-DD",
-    "due_date": "auto | YYYY-MM-DD",
-    "issuer": "name and last name | company name"
+    "due_date": "",
+    "issuer": ""
   },
-
   "items": [
     {
       "name": "",
       "quantity": 1,
       "unit": "ks",
-      "unit_price": 15000
+      "unit_price": 1000
     },
     {
-      "name": "",
+      "name": "Správa webu",
       "quantity": 3,
       "unit": "hod",
       "unit_price": 1000

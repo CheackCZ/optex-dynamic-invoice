@@ -1,7 +1,7 @@
 \jsonread\Data{data/data.json}
 \treedata[invoice]\Data
 
-% ---------- helpers ----------
+% helpers
 
 \def\Json#1{\cs{invoice/#1}}
 \def\JsonOrEmpty#1{\trycs{invoice/#1}{}}
@@ -12,7 +12,7 @@
   \ifx\tmp\trueval Plátce DPH\else Neplátce DPH\fi
 }
 
-% ---------- supplier ----------
+% supplier data
 
 \def\SupplierName{\Json{supplier/name}}
 \def\SupplierStreet{\Json{supplier/address/street}}
@@ -22,9 +22,10 @@
 \def\SupplierIco{\Json{supplier/ico}}
 \def\SupplierDic{\JsonOrEmpty{supplier/dic}}
 \def\SupplierBankAccount{\Json{supplier/bank_account}}
+\def\SupplierPaymentMethod{\Json{settings/payment_method}}
 \def\SupplierVatText{\VatText{\Json{supplier/vat_payer}}}
 
-% ---------- customer ----------
+% customer data
 
 \def\CustomerName{\Json{customer/name}}
 \def\CustomerStreet{\Json{customer/address/street}}
@@ -35,7 +36,7 @@
 \def\CustomerDic{\JsonOrEmpty{customer/dic}}
 \def\CustomerVatText{\VatText{\Json{customer/vat_payer}}}
 
-% ---------- invoice settings ----------
+% invoice settings
 
 \def\InvoiceNumber{\Json{settings/invoice_number}}
 \def\InvoiceCurrency{\Json{settings/currency}}
@@ -44,7 +45,22 @@
 \def\InvoiceDueDate{\Json{settings/due_date}}
 \def\InvoiceIssuer{\Json{settings/issuer}}
 
-% ---------- items ----------
+% total
+\def\InvoiceTotal{%
+  \directlua{total = 0}%
+  \fornum 1..\cs{invoice/items[]} \do {%
+    \directlua{%
+      local quantity = tonumber("\cs{invoice/items[##1]/quantity}") or 0
+      local price = tonumber("\cs{invoice/items[##1]/unit_price}") or 0
+      total = total + quantity * price
+    }%
+  }%
+  \directlua{%
+    tex.print(string.format(string.char(37) .. ".2f", total))
+  }%
+}
+
+% items
 
 \def\InvoiceItems{%
   \fornum 1..\cs{invoice/items[]} \do {%

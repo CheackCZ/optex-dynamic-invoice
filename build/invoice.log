@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=optex 2026.6.6)  6 JUN 2026 17:48
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=optex 2026.6.6)  6 JUN 2026 20:57
  restricted system commands enabled.
 **./src/invoice.tex
 (./src/invoice.tex This is OpTeX (Olsak's Plain TeX), version <1.20 May 2026>
@@ -45,7 +45,7 @@ MATH-FONT: "[FiraMath-Regular]" -- unicode math prepared.
 
 add-MATH-FONT: \_xits =43, "[XITSMath-Regular]", bold: "[XITSMath-Bold]"
 )
-Underfull \hbox (badness 10000) in alignment at lines 125--139
+Underfull \hbox (badness 10000) in alignment at lines 128--141
 [][][][][]
 
 \hbox(0.0+0.0)x483.69687, direction TLT
@@ -65,7 +65,7 @@ Underfull \hbox (badness 10000) in alignment at lines 125--139
 )</usr/local/texlive/2026/texmf-dist/fonts/opentype/public/tex-gyre/texgyreheros
 -regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/tex-gyre/
 texgyreheros-bold.otf>
-Output written on invoice.pdf (1 page, 12320 bytes).
+Output written on invoice.pdf (1 page, 11975 bytes).
 
 PDF statistics: 25 PDF objects out of 1000 (max. 8388607)
  15 compressed objects within 1 object stream
