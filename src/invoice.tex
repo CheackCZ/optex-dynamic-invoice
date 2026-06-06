@@ -42,7 +42,9 @@
     \SupplierState\par
     \vskip8pt
     {\bf IČO} \SupplierIco\par
+    \ifcsname invoice/supplier/dic\endcsname
     {\bf DIČ} \SupplierDic\par
+    \fi
     {\bf \SupplierVatText}\par
   }%
   \hfil
@@ -56,7 +58,9 @@
     \CustomerState\par
     \vskip8pt
     {\bf IČO} \CustomerIco\par
+    \ifcsname invoice/customer/dic\endcsname
     {\bf DIČ} \CustomerDic\par
+    \fi
     {\bf \CustomerVatText}\par
   }%
 }
