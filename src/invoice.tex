@@ -28,13 +28,14 @@
 }
 
 \def\QrPaymentString{%
-  SPD*1.0*ACC:\SupplierIban*AM:\InvoiceTotalRaw*CC:CZK*X-VS:\InvoiceNumber
+  SPD*1.0*ACC:\SupplierIban*AM:\InvoiceTotalRaw*CC:CZK*X-VS:\InvoiceNumber%
 }
 
 \def\QrPayment{%
-  \qrcode[height=42mm,width=42mm,tight]{\QrPaymentString}%
+  \expanded{%
+    \noexpand\qrcode[height=42mm,width=42mm,tight]{\QrPaymentString}%
+  }%
 }
-
 
 % document
 {\typosize[12/16]\bf FAKTURA č. \InvoiceNumber}
