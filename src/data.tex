@@ -22,6 +22,7 @@
 \def\SupplierIco{\Json{supplier/ico}}
 \def\SupplierDic{\JsonOrEmpty{supplier/dic}}
 \def\SupplierBankAccount{\Json{supplier/bank_account}}
+\def\SupplierIban{\Json{supplier/iban}}
 \def\SupplierPaymentMethod{\Json{settings/payment_method}}
 \def\SupplierVatText{\VatText{\Json{supplier/vat_payer}}}
 
@@ -46,7 +47,8 @@
 \def\InvoiceIssuer{\Json{settings/issuer}}
 
 % total
-\def\InvoiceTotal{%
+% total raw - for QR payment
+\def\InvoiceTotalRaw{%
   \directlua{total = 0}%
   \fornum 1..\cs{invoice/items[]} \do {%
     \directlua{%
@@ -57,6 +59,32 @@
   }%
   \directlua{%
     tex.print(string.format(string.char(37) .. ".2f", total))
+  }%
+}
+
+% total formatted - for invoice text
+\def\InvoiceTotal{%
+  \directlua{total = 0}%
+  \fornum 1..\cs{invoice/items[]} \do {%
+    \directlua{%
+      local quantity = tonumber("\cs{invoice/items[##1]/quantity}") or 0
+      local price = tonumber("\cs{invoice/items[##1]/unit_price}") or 0
+      total = total + quantity * price
+    }%
+  }%
+  \directlua{%
+    local s = string.format(string.char(37) .. ".2f", total)
+    local dot = string.find(s, ".", 1, true)
+    local int = string.sub(s, 1, dot - 1)
+    local dec = string.sub(s, dot + 1)
+
+    local out = ""
+    while string.len(int) > 3 do
+      out = " " .. string.sub(int, -3) .. out
+      int = string.sub(int, 1, -4)
+    end
+
+    tex.print(int .. out .. "," .. dec)
   }%
 }
 

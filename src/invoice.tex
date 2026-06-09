@@ -1,4 +1,5 @@
 \input src/data.tex
+\load[qrcode]
 
 % metadata
 \cslang
@@ -26,8 +27,19 @@
   #1 & #2 & #3 & #4 & #5 \cr
 }
 
+\def\QrPaymentString{%
+  SPD*1.0*ACC:\SupplierIban*AM:\InvoiceTotalRaw*CC:CZK*X-VS:\InvoiceNumber
+}
+
+\def\QrPayment{%
+  \qrcode[height=42mm,width=42mm,tight]{\QrPaymentString}%
+}
+
+
 % document
 {\typosize[12/16]\bf FAKTURA č. \InvoiceNumber}
+
+\QrPaymentString
 
 \vskip24pt
 
@@ -71,8 +83,53 @@
   \hbox to 0pt{%
     \kern-2cm
     {\Blue\vrule width 210mm height 96pt depth0pt}%
+
+
+    \kern-210mm
+    \kern2cm
+    \hbox to \hsize{%
+      \hfil
+      \hbox to 56mm{%
+        % blue rectangle background
+        \hbox to 0pt{%
+          {\Blue\vrule width 56mm height 124pt depth28pt}%
+          \hss
+        }%
+
+        % centered white square with QR on top
+        \hbox to 56mm{%
+          \hfil
+          \raise-20pt\hbox{%
+            \hbox to 50mm{%
+              % white square background
+              \hbox to 0pt{%
+                {\White\vrule width 50mm height 48mm depth0pt}%
+                \hss
+              }%
+
+              % QR overlay
+              \hbox to 50mm{%
+                \hfil
+                \vbox to 48mm{%
+                  \vfil
+                  \hbox to 42mm{%
+                    \hfil
+                    \QrPayment
+                    \hfil
+                  }%
+                  \vfil
+                }%
+                \hfil
+              }%
+            }%
+          }%
+          \hfil
+        }%
+      }%
+    }%
     \hss
   }%
+
   \vbox to 96pt{%
     \vskip15pt
 
@@ -106,7 +163,7 @@
   }%
 }
 
-\vskip24pt
+\vskip48pt
 
 \hbox to \hsize{%
   \Col{.30\hsize}{%
