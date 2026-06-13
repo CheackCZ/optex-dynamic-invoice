@@ -28,7 +28,7 @@
 }
 
 \def\QrPaymentString{%
-  SPD*1.0*ACC:\SupplierIban*AM:\InvoiceTotalRaw*CC:CZK*X-VS:\InvoiceNumber%
+  SPD*1.0*ACC:\SupplierIban*AM:\InvoiceTotalRaw*CC:CZK*X-VS:\InvoiceNumber
 }
 
 \def\QrPayment{%
@@ -188,6 +188,7 @@
 \vskip8pt
 
 \halign to \hsize{%
+  \tabskip=0pt
   \hbox to 13mm{#\hfil}&
   \hbox to 13mm{#\hfil}&
   \hbox to 82mm{#\hfil}&
@@ -225,7 +226,7 @@
 
         \hbox to 32mm{%
           \hfil
-          {\White\typosize[12/16]\bf \InvoiceTotal Kč}%
+          {\White\typosize[12/16]\bf \InvoiceTotal\ \InvoiceCurrency}%
         }%
 
       }%
